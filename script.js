@@ -190,5 +190,42 @@ function football(){
                 box.append(title)
             }
         });
+        // if video content is not available
+        // remove league logo and container space
+        if(document.querySelector(".ucl").innerHTML==""){
+            document.getElementById("ucl").style.display="none";
+            document.querySelector(".ucl-li").style.display="none"
+            document.querySelector(".ucl").style.display="none"
+        }
+        if(document.querySelector(".epl").innerHTML==""){
+            document.getElementById("epl").style.display="none";
+            document.querySelector(".epl-li").style.display="none"
+            document.querySelector(".epl").style.display="none"
+        }
+        if(document.querySelector(".laliga").innerHTML==""){
+            document.getElementById("laliga").style.display="none";
+            document.querySelector(".laliga-li").style.display="none"
+            document.querySelector(".laliga").style.display="none"
+        }
+        if(document.querySelector(".bundlga").innerHTML==""){
+            document.getElementById("bundlga").style.display="none";
+            document.querySelector(".bundlga-li").style.display="none"
+            document.querySelector(".bundlga").style.display="none"
+        }
+        if(document.querySelector(".serieA").innerHTML==""){
+            document.getElementById("serieA").style.display="none";
+            document.querySelector(".serieA-li").style.display="none"
+            document.querySelector(".serieA").style.display="none"
+        }
+        if(document.querySelector(".ligue-1").innerHTML==""){
+            document.getElementById("ligue-1").style.display="none";
+            document.querySelector(".ligue-1-li").style.display="none"
+            document.querySelector(".ligue-1").style.display="none"
+        }
+        if(document.querySelector(".efl").innerHTML==""){
+            document.getElementById("efl").style.display="none";
+            document.querySelector(".efl-li").style.display="none"
+            document.querySelector(".efl").style.display="none"
+        }
     }).catch(err=>console.log(err,"ERROR"))
 }
