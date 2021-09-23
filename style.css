@@ -141,7 +141,7 @@ footer {
     margin: 20px 10px;
     padding: 5px;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
   footer {
     padding: 20px;
@@ -166,7 +166,7 @@ footer {
     font-size: 15px;
   }
   .box {
-    width: 250px;
+    width: 90%;
     padding: 10px 5px;
     border-radius: 5px;
     margin: auto;
@@ -186,9 +186,9 @@ footer {
     font-size: 15px;
   }
   .container {
+    display: block;
     margin: 10px 3px;
     padding: 5px;
-    grid-gap: 10px;
   }
   footer {
     padding: 10px;
