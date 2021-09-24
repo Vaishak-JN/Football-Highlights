@@ -1,4 +1,66 @@
 // Method 1
+// dynamic
+// call function when page load
+window.onload=football;
+function football(){
+    fetch("https://www.scorebat.com/video-api/v3/")
+    .then(res=>res.json())
+    .then(data=>{
+        video(data,"ucl","CHAMPIONS LEAGUE:")
+        video(data,"epl","ENGLAND: Premier")
+        video(data,"laliga","SPAIN:")
+        video(data,"bundlga","GERMANY:")
+        video(data,"serieA","ITALY:")
+        video(data,"ligue-1","FRANCE:")
+        video(data,"efl","ENGLAND: League")
+    })
+    .catch(err=>{
+        console.log(err)
+        console.log("error")
+        document.querySelector("#ucl").style.display="none";
+        document.querySelector("#epl").style.display="none";
+        document.querySelector("#laliga").style.display="none";
+        document.querySelector("#bundlga").style.display="none";
+        document.querySelector("#serieA").style.display="none";
+        document.querySelector("#ligue-1").style.display="none";
+        document.querySelector("#efl").style.display="none";
+        document.querySelector(".ucl").style.display="none";
+        document.querySelector(".epl").style.display="none";
+        document.querySelector(".laliga").style.display="none";
+        document.querySelector(".bundlga").style.display="none";
+        document.querySelector(".serieA").style.display="none";
+        document.querySelector(".ligue-1").style.display="none";
+        document.querySelector(".efl").style.display="none";
+        let error=document.createElement("h2");
+        error.innerText="Sorry, something went wrong. Please try again later."
+        document.body.append(error)
+    })
+}
+function video(data,id,league){
+    data.response.forEach(ele => {
+        if(ele.competition.includes(league)){
+            const league=document.querySelector(`.${id}`)
+            const box=document.createElement("div");
+            box.setAttribute("class","box")
+            const title=document.createElement("h3");
+            title.innerText=ele.title;
+            league.appendChild(box)
+            box.innerHTML=ele.videos[0].embed
+            box.append(title)
+        }
+    });
+    // if video content is not available
+    // remove league logo and container space
+    if(document.querySelector(`.${id}`).innerHTML==""){
+        document.getElementById(id).style.display="none";
+        document.querySelector(`.${id}-li`).style.display="none"
+        document.querySelector(`.${id}`).style.display="none"
+    }
+}
+// ****************************************
+
+
+// Method 2
 // // call function when page load
 // window.onload=football;
 
@@ -244,7 +306,7 @@
 // }
 // **********************************************
 
-// Method 2
+// Method 3
 // Using async await
 
 // async function football(){
@@ -489,63 +551,3 @@
 // }
 // **************************************************
 
-// Method 3
-// dynamic
-// call function when page load
-window.onload=football;
-function football(){
-    fetch("https://www.scorebat.com/video-api/v3/")
-    .then(res=>res.json())
-    .then(data=>{
-        video(data,"ucl","CHAMPIONS LEAGUE:")
-        video(data,"epl","ENGLAND: Premier")
-        video(data,"laliga","SPAIN:")
-        video(data,"bundlga","GERMANY:")
-        video(data,"serieA","ITALY:")
-        video(data,"ligue-1","FRANCE:")
-        video(data,"efl","ENGLAND: League")
-    })
-    .catch(err=>{
-        console.log(err)
-        console.log("error")
-        document.querySelector("#ucl").style.display="none";
-        document.querySelector("#epl").style.display="none";
-        document.querySelector("#laliga").style.display="none";
-        document.querySelector("#bundlga").style.display="none";
-        document.querySelector("#serieA").style.display="none";
-        document.querySelector("#ligue-1").style.display="none";
-        document.querySelector("#efl").style.display="none";
-        document.querySelector(".ucl").style.display="none";
-        document.querySelector(".epl").style.display="none";
-        document.querySelector(".laliga").style.display="none";
-        document.querySelector(".bundlga").style.display="none";
-        document.querySelector(".serieA").style.display="none";
-        document.querySelector(".ligue-1").style.display="none";
-        document.querySelector(".efl").style.display="none";
-        let error=document.createElement("h2");
-        error.innerText="Sorry, something went wrong. Please try again later."
-        document.body.append(error)
-    })
-}
-function video(data,id,league){
-    data.response.forEach(ele => {
-        if(ele.competition.includes(league)){
-            const league=document.querySelector(`.${id}`)
-            const box=document.createElement("div");
-            box.setAttribute("class","box")
-            const title=document.createElement("h3");
-            title.innerText=ele.title;
-            league.appendChild(box)
-            box.innerHTML=ele.videos[0].embed
-            box.append(title)
-        }
-    });
-    // if video content is not available
-    // remove league logo and container space
-    if(document.querySelector(`.${id}`).innerHTML==""){
-        document.getElementById(id).style.display="none";
-        document.querySelector(`.${id}-li`).style.display="none"
-        document.querySelector(`.${id}`).style.display="none"
-    }
-}
-// ****************************************
