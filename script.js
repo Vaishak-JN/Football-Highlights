@@ -15,20 +15,13 @@ function football(){
     .catch(err=>{
         console.log(err)
         console.log("error")
-        document.querySelector("#ucl").style.display="none";
-        document.querySelector("#epl").style.display="none";
-        document.querySelector("#laliga").style.display="none";
-        document.querySelector("#bundlga").style.display="none";
-        document.querySelector("#serieA").style.display="none";
-        document.querySelector("#ligue-1").style.display="none";
-        document.querySelector("#efl").style.display="none";
-        document.querySelector(".ucl").style.display="none";
-        document.querySelector(".epl").style.display="none";
-        document.querySelector(".laliga").style.display="none";
-        document.querySelector(".bundlga").style.display="none";
-        document.querySelector(".serieA").style.display="none";
-        document.querySelector(".ligue-1").style.display="none";
-        document.querySelector(".efl").style.display="none";
+//         to hide all img and container
+        document.querySelectorAll(".container").forEach(e => {
+            e.style.display="none"
+        });
+        document.querySelectorAll("img").forEach(el => {
+            el.style.display="none"
+        });
         let error=document.createElement("h2");
         error.innerText="Sorry, something went wrong. Please try again later."
         document.body.append(error)
@@ -59,8 +52,8 @@ function video(data,id,league){
 window.onload=football;
 // ****************************************
 
-
 // Method 2
+
 // // call function when page load
 // window.onload=football;
 
@@ -307,6 +300,7 @@ window.onload=football;
 // **********************************************
 
 // Method 3
+
 // Using async await
 
 // async function football(){
