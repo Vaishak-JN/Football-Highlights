@@ -491,13 +491,11 @@
 
 // Method 3
 // dynamic
-// // call function when page load
+// call function when page load
 window.onload=football;
 async function football(){
     let res=await fetch("https://www.scorebat.com/video-api/v3/")
     let data=await res.json();
-    try{
-        
         video(data,"ucl","CHAMPIONS LEAGUE:")
         video(data,"epl","ENGLAND: Premier")
         video(data,"laliga","SPAIN:")
@@ -505,20 +503,28 @@ async function football(){
         video(data,"serieA","ITALY:")
         video(data,"ligue-1","FRANCE:")
         video(data,"efl","ENGLAND: League")
-    }catch(err){
-        console.log(err)
-        document.getElementById("ucl").style.display="none";
-        document.getElementById("epl").style.display="none";
-        document.getElementById("laliga").style.display="none";
-        document.getElementById("bundlga").style.display="none";
-        document.getElementById("serieA").style.display="none";
-        document.getElementById("ligue-1").style.display="none";
-        document.getElementById("efl").style.display="none";
-        let error=document.createElement("h2");
-        error.innerText="Sorry, something went wrong. Please try again later."
-        document.querySelector(".ucl").append(error)
-    }
 }
+football()
+.catch(err=>{
+        console.log(err)
+        document.querySelector("#ucl").style.display="none";
+        document.querySelector("#epl").style.display="none";
+        document.querySelector("#laliga").style.display="none";
+        document.querySelector("#bundlga").style.display="none";
+        document.querySelector("#serieA").style.display="none";
+        document.querySelector("#ligue-1").style.display="none";
+        document.querySelector("#efl").style.display="none";
+        document.querySelector(".ucl").style.display="none";
+        document.querySelector(".epl").style.display="none";
+        document.querySelector(".laliga").style.display="none";
+        document.querySelector(".bundlga").style.display="none";
+        document.querySelector(".serieA").style.display="none";
+        document.querySelector(".ligue-1").style.display="none";
+        document.querySelector(".efl").style.display="none";
+        let error=document.createElement("h2");
+        error.innerText="Sorry something's not right. Please come back later."
+        document.body.append(error)
+})
 function video(data,id,league){
     data.response.forEach(ele => {
         if(ele.competition.includes(league)){
