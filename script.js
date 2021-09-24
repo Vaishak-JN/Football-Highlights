@@ -1,7 +1,5 @@
 // Method 1
 // dynamic
-// call function when page load
-window.onload=football;
 function football(){
     fetch("https://www.scorebat.com/video-api/v3/")
     .then(res=>res.json())
@@ -57,6 +55,8 @@ function video(data,id,league){
         document.querySelector(`.${id}`).style.display="none"
     }
 }
+// call function when page load
+window.onload=football;
 // ****************************************
 
 
