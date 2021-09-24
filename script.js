@@ -493,9 +493,10 @@
 // dynamic
 // call function when page load
 window.onload=football;
-async function football(){
-    let res=await fetch("https://www.scorebat.com/video-api/v3/")
-    let data=await res.json();
+function football(){
+    fetch("https://www.scorebat.com/video-api/v3/")
+    .then(res=>res.json())
+    .then(data=>{
         video(data,"ucl","CHAMPIONS LEAGUE:")
         video(data,"epl","ENGLAND: Premier")
         video(data,"laliga","SPAIN:")
@@ -503,10 +504,10 @@ async function football(){
         video(data,"serieA","ITALY:")
         video(data,"ligue-1","FRANCE:")
         video(data,"efl","ENGLAND: League")
-}
-football()
-.catch(err=>{
+    })
+    .catch(err=>{
         console.log(err)
+        console.log("error")
         document.querySelector("#ucl").style.display="none";
         document.querySelector("#epl").style.display="none";
         document.querySelector("#laliga").style.display="none";
@@ -522,9 +523,10 @@ football()
         document.querySelector(".ligue-1").style.display="none";
         document.querySelector(".efl").style.display="none";
         let error=document.createElement("h2");
-        error.innerText="Sorry something's not right. Please come back later."
+        error.innerText="Sorry, something went wrong. Please try again later."
         document.body.append(error)
-})
+    })
+}
 function video(data,id,league){
     data.response.forEach(ele => {
         if(ele.competition.includes(league)){
