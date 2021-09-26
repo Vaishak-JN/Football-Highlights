@@ -98,6 +98,10 @@ footer {
   padding: 50px;
   color: cornflowerblue;
 }
+/* to select all divs after img and then select child divs of the parent div */
+img:hover + div > div {
+  box-shadow: 3px 4px 10px rgb(14, 92, 238);
+}
 @media (max-width: 900px) {
   img {
     width: 150px;
