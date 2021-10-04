@@ -10,7 +10,7 @@ body {
 }
 img {
   display: block;
-  width: 250px;
+  width: 150px;
   margin: 10px auto;
   cursor: pointer;
 }
@@ -51,7 +51,7 @@ a:hover::after {
   width: 100%;
 }
 .box {
-  width: 400px;
+  width: 350px;
   padding: 10px;
   text-align: center;
   border-radius: 8px;
@@ -67,6 +67,9 @@ a:hover::after {
 }
 .box:hover h3 {
   color: whitesmoke;
+}
+h2 {
+  text-align: center;
 }
 header {
   text-align: center;
